@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        li {
+          list-style-type: none;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+    <th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+    <h1 th:text="'NOTE MEMO'"></h1>
+    <form method="post" action="/memo2">
+        <h3 th:text="'writer'"></h3>
+        <input type="text" name="writer"><br>
+        <h3 th:text="'memo'"></h3>
+        <textarea cols="50" rows="5" name="memo"></textarea><br>
+        <button type="submit">Done</button>
+    </form>
+</body>
+</html>

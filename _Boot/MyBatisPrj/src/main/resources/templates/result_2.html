@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    li {
+      list-style-type: none;
+    }
+  </style>
+  <title>Title</title>
+</head>
+<body>
+  <th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+  <li th:each="value : ${results}" th:text="${value}"></li>
+</body>
+</html>
