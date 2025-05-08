@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class MemoController {
     @Autowired
@@ -24,5 +26,13 @@ public class MemoController {
     public String insert(memoDTO dto){
         service.insert(dto);
         return "result_memo";
+    }
+
+    @GetMapping("/memo/list")
+    public String listAll(Model model){
+        List<memoDTO> all = service.listAll();
+        model.addAttribute("data", all);
+        System.out.println("size : " + all.size());
+        return "memo_result";
     }
 }

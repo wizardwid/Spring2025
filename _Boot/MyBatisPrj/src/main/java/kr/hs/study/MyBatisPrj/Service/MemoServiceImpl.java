@@ -19,7 +19,7 @@ public class MemoServiceImpl implements MemoService {
 
     @Override
     public List<memoDTO> listAll() {
-        return List.of();
+        return dao.listAll();
     }
 
     @Override
