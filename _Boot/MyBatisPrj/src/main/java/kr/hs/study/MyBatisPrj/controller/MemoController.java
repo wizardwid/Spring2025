@@ -25,7 +25,7 @@ public class MemoController {
     @PostMapping("/memo2")
     public String insert(memoDTO dto){
         service.insert(dto);
-        return "result_memo";
+        return "redirect:/memo/list";
     }
 
     @GetMapping("/memo/list")
