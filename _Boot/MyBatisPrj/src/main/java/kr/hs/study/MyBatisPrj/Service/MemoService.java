@@ -1,5 +1,6 @@
 package kr.hs.study.MyBatisPrj.Service;
 
+import kr.hs.study.MyBatisPrj.DAO.MemoDAO;
 import kr.hs.study.MyBatisPrj.DTO.memoDTO;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,10 @@ public interface MemoService {
     public List<memoDTO> listAll();
 
     // 3. update
-    public void update(int idx);
+    public void update(memoDTO dto);
 
     // 4. delete
-    public void delete(int idx);
+    public void delete(memoDTO dto);
+
+    public memoDTO selectOne(int idx);
 }

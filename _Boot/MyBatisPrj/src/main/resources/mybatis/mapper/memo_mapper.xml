@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.hs.study.MyBatisPrj.DAO.MemoDAO">
-<insert id="insert" parameterType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
-    insert into memo(idx, writer, memo) values(memo_seq.nextVal, #{writer}, #{memo})
-</insert>
-<select id="listAll" resultType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
-    select * from memo order by idx desc
-</select>
+    <insert id="insert" parameterType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
+        insert into memo(idx, writer, memo) values(memo_seq.nextVal, #{writer}, #{memo})
+    </insert>
+    <select id="listAll" resultType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
+        select * from memo order by idx desc
+    </select>
+    <select id="selectOne" resultType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
+        select * from memo where idx = #{idx}
+    </select>
+    <update id="update" parameterType="kr.hs.study.MyBatisPrj.DTO.memoDTO">
+        update memo set writer = #{writer}, memo = #{memo} where idx = #{idx}
+    </update>
 </mapper>

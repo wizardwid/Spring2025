@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -18,14 +19,17 @@ public class MemoController {
     private MemoService service;
 
     @GetMapping("/Memo")
-    public String memo(){
+    public String memo(Model model) {
+        List<memoDTO> all = service.listAll();
+        model.addAttribute("data", all);
+        System.out.println("size : " + all.size());
         return "memo_list";
     }
 
     @PostMapping("/memo2")
     public String insert(memoDTO dto){
         service.insert(dto);
-        return "redirect:/memo/list";
+        return "redirect:/Memo";
     }
 
     @GetMapping("/memo/list")
@@ -34,5 +38,20 @@ public class MemoController {
         model.addAttribute("data", all);
         System.out.println("size : " + all.size());
         return "memo_result";
+    }
+
+    @GetMapping("/edit/{idx}")
+    public String edit_form(@PathVariable("idx") int idx, Model model) {
+        System.out.println("idx : " + idx);
+        service.selectOne(idx);
+        memoDTO dto = service.selectOne(idx);
+        model.addAttribute("one", dto);
+        return "edit_form";
+    }
+
+    @PostMapping("/edit")
+    public String edit(memoDTO dto){
+        service.update(dto);
+        return "redirect:/Memo";
     }
 }

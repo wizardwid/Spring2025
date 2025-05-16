@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link th:href="@{/todo.css}" rel="stylesheet" />
+    <link th:href="@{/memo.css}" rel="stylesheet" />
     <title>Title</title>
 </head>
 <body>
@@ -14,6 +15,24 @@
         <h3 th:text="'memo'"></h3>
         <textarea cols="50" rows="5" name="memo"></textarea><br>
         <button type="submit">Done</button>
-    </form>
+    </form> </br>
+
+    <table border="1">
+        <tr>
+            <td th:text="ID"></td>
+            <td th:text="Writer"></td>
+            <td th:text="Memo"></td>
+            <td th:text="Post_Date"></td>
+            <td th:text="ETC"></td>
+        </tr>
+        <tr th:each="item:${data}">
+            <td th:text="${item.idx}"></td>
+            <td th:text="${item.writer}"></td>
+            <td th:text="${item.memo}"></td>
+            <td th:text="${item.post_date}"></td>
+            <td><a th:href="@{'/edit/'+${item.idx}}">Update</a>
+                <a th:href="@{'/delete/'+${item.idx}}">Delete</a></td>
+        </tr>
+    </table>
 </body>
 </html>

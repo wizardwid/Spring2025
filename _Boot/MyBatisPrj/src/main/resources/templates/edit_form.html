@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/todo.css}" rel="stylesheet" />
+  <title>Title</title>
+</head>
+<body>
+<th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+<h1 th:text="'NOTE MEMO'"></h1>
+<form method="post" action="/edit">
+  <input type="hidden" name="idx" th:value="${one.idx}">
+  <h3 th:text="'writer'"></h3>
+  <input type="text" name="writer" th:value="${one.writer}"><br>
+  <h3 th:text="'memo'"></h3>
+  <textarea cols="50" rows="5" name="memo" th:text="${one.memo}"></textarea><br>
+  <button type="submit">edit</button>
+</form>
+</body>
+</html>

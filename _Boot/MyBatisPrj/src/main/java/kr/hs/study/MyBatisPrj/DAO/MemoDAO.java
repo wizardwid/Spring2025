@@ -16,8 +16,10 @@ public interface MemoDAO {
     public List<memoDTO> listAll();
 
     // 3. update
-    public void update(int idx);
+    public void update(memoDTO dto);
 
     // 4. delete
-    public void delete(int idx);
+    public void delete(memoDTO dto);
+
+    public memoDTO selectOne(int idx);
 }
