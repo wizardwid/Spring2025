@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/todo.css}" rel="stylesheet" />
+  <title>Title</title>
+</head>
+<body>
+<th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+<h1 th:text="'Todo App'"></h1>
+<form method="post" action="/todo2">
+  <input type="text" name="content" placeholder="할 일을 작성하시오."> <br>
+  <input type="text" name="password" placeholder="비밀번호를 입력하시오."> <br>
+  <button type="submit">done</button>
+</form>
+</body>
+</html>
