@@ -19,7 +19,7 @@ public interface MemoDAO {
     public void update(memoDTO dto);
 
     // 4. delete
-    public void delete(memoDTO dto);
+    public void delete(int idx);
 
     public memoDTO selectOne(int idx);
 }
