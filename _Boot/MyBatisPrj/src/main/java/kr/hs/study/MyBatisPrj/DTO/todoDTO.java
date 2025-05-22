@@ -10,5 +10,5 @@ public class todoDTO {
     private String content;
     private String password;
     private String status;
-    private LocalDateTime post_date;
+    private LocalDateTime postdate;
 }

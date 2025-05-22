@@ -4,4 +4,7 @@
     <insert id="insert" parameterType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
         insert into todo(idx, content, password) values(todo_seq.nextVal, #{content}, #{password})
     </insert>
+    <select id="listAll" resultType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
+        select * from todo order by idx desc
+    </select>
 </mapper>

@@ -6,6 +6,8 @@ import kr.hs.study.MyBatisPrj.DTO.todoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TodoServiceImpl implements TodoService {
     @Autowired
@@ -14,5 +16,10 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void insert(todoDTO dto) {
         dao.insert(dto);
+    }
+
+    @Override
+    public List<todoDTO> listAll() {
+        return dao.listAll();
     }
 }
