@@ -9,4 +9,11 @@ public interface TodoService {
 
     public List<todoDTO> listAll();
 
+    public void update(todoDTO dto);
+
+    public todoDTO selectOne(int idx);
+
+    public String selectPw(int idx);
+
+    public void delete(int idx);
 }

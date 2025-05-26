@@ -22,4 +22,16 @@ public class TodoServiceImpl implements TodoService {
     public List<todoDTO> listAll() {
         return dao.listAll();
     }
+
+    @Override
+    public void update(todoDTO dto) { dao.update(dto); }
+
+    @Override
+    public todoDTO selectOne(int idx) { return dao.selectOne(idx); }
+
+    @Override
+    public String selectPw(int idx) { return dao.selectPw(idx); }
+
+    @Override
+    public void delete(int idx) { dao.delete(idx); }
 }

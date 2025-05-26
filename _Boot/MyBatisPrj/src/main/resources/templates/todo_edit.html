@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/todo.css}" rel="stylesheet" />
+  <title>Title</title>
+</head>
+<body>
+<th:block th:replace="~{fragments/menu::menuFragment}"></th:block>
+<h1 th:text="'Todo'"></h1>
+<form method="post" action="/update">
+  <input type="hidden" name="idx" th:value="${one.idx}">
+  <h3 th:text="'content'"></h3>
+  <input type="text" name="content" th:value="${one.content}"><br>
+  <h3 th:text="'status'"></h3>
+  <input type="text" name="status" th:value="${one.status}"><br>
+  <h3 th:text="'password'"></h3>
+  <input type="text" name="password"><br>
+  <button type="submit">edit</button>
+  <div th:if="${error}" th:text="${error}" style="color:red;"></div>
+</form>
+</body>
+</html>

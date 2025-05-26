@@ -7,4 +7,16 @@
     <select id="listAll" resultType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
         select * from todo order by idx desc
     </select>
+    <select id="selectOne" resultType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
+        select * from todo where idx = #{idx}
+    </select>
+    <select id="selectPw" resultType="string">
+        select password from todo where idx = #{idx}
+    </select>
+    <update id="update" parameterType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
+        update todo set content = #{content}, status = #{status} where idx = #{idx}
+    </update>
+    <delete id="delete" parameterType="kr.hs.study.MyBatisPrj.DTO.todoDTO">
+        delete from todo where idx = #{idx}
+    </delete>
 </mapper>
