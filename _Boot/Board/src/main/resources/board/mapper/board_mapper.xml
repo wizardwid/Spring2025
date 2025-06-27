@@ -5,4 +5,16 @@
         insert into board(id, boardWriter, boardPass, boardTitle, boardContents)
         values(board_seq.nextVal, #{boardWriter}, #{boardPass}, #{boardTitle}, #{boardContents})
     </insert>
+    <select id="listAll" resultType="kr.hs.study.Board.DTO.boardDTO">
+        select id, boardWriter, boardTitle, boardHits, boardCreatedTime from board order by boardCreatedTime desc
+    </select>
+    <select id="selectOne" resultType="kr.hs.study.Board.DTO.boardDTO">
+        select id, boardWriter, boardTitle, boardContents, boardHits, boardCreatedTime from board where id=#{id}
+    </select>
+    <update id="update_Hits" parameterType="kr.hs.study.Board.DTO.boardDTO">
+        update board set boardHits=#{hit} where id=#{id}
+    </update>
+    <update id="update" parameterType="kr.hs.study.Board.DTO.boardDTO">
+        update board set boardWriter=#{boardWriter}, boardTitle=#{boardTitle}, boardContents=#{boardContents} where id=#{id}
+    </update>
 </mapper>

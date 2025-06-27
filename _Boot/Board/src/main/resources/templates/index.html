@@ -7,6 +7,26 @@
 <body>
 <h2 th:text="'hello'"></h2>
 <a th:href="@{/board/save}">글작성</a>
-<a th:href="@{/board/}">글목록</a>
+<a th:href="@{/board}">글목록</a>
+
+<table border="1">
+    <tr>
+        <td th:text="ID"></td>
+        <td th:text="Writer"></td>
+        <td th:text="Title"></td>
+        <td th:text="Hits"></td>
+        <td th:text="CreatedAt"></td>
+        <td th:text="ETC"></td>
+    </tr>
+    <tr th:each="item:${data}">
+        <td th:text="${item.id}"></td>
+        <td th:text="${item.boardWriter}"></td>
+        <td><a th:href="@{'/select/' + ${item.id}}" th:text="${item.boardTitle}"></a></td>
+        <td th:text="${item.boardHits}"></td>
+        <td th:text="${item.boardCreatedTime}"></td>
+        <td><a th:href="@{'/edit/'+${item.id}}">수정</a>
+            <a th:href="@{'/delete/'+${item.id}}">삭제</a></td>
+    </tr>
+</table>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<table border="1">
+  <tr>
+    <td th:text="ID"></td>
+    <td th:text="Writer"></td>
+    <td th:text="Title"></td>
+    <td th:text="Hits"></td>
+    <td th:text="CreatedAt"></td>
+    <td th:text="ETC"></td>
+  </tr>
+  <tr th:each="item:${data}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.boardWriter}"></td>
+    <td><a th:href="@{'/select/' + ${item.id}}" th:text="${item.boardTitle}"></a></td>
+    <td th:text="${item.boardHits}"></td>
+    <td th:text="${item.boardCreatedTime}"></td>
+    <td><a th:href="@{'/edit/'+${item.id}}">수정</a>
+      <a th:href="@{'/delete/'+${item.id}}">삭제</a></td>
+  </tr>
+</table>
+</body>
+</html>

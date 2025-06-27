@@ -12,5 +12,5 @@ public class boardDTO {
     private String boardTitle;
     private String boardContents;
     private int boardHits;
-    private LocalDateTime boardCreatedTIme;
+    private LocalDateTime boardCreatedTime;
 }
