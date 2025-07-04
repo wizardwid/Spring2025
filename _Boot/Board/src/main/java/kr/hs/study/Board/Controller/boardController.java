@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -54,23 +55,45 @@ public class boardController {
         return "board_view";
     }
 
-//    @GetMapping("/edit/{id}")
-//    public String edit(@PathVariable("id") int id, Model model){
-//        boardDTO dto = service.selectOne(id);
-//        model.addAttribute("one", dto);
-//        return "edit_form";
-//    }
-
-    @GetMapping("/update/{id}")
-    public String edit(@PathVariable("id") int id, Model model) {
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") int id, Model model){
         boardDTO dto = service.selectOne(id);
         model.addAttribute("one", dto);
         return "edit_form";
     }
 
     @PostMapping("/edit")
-    public String edit(boardDTO dto){
-        service.update(dto);
-        return "redirect:/";
+    public String edit(boardDTO dto,
+                       @RequestParam("id") int id,
+                       @RequestParam("boardPass") String boardPass,
+                       Model model){
+        if(dto.getBoardPass().equals(service.selectPw(dto.getId()))){
+            service.update(dto);
+            return "redirect:/";
+        }
+        else{
+            model.addAttribute("one", dto);
+            return "edit_form";
+        }
+    }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id, Model model){
+        model.addAttribute("id", id);
+        return "delete_form";
+    }
+
+    @PostMapping("/checkPass")
+    public String checkPw(@RequestParam("id") int id,
+                          @RequestParam("boardPass") String boardPass){
+        String correctPw = service.selectPw(id);
+
+        if(boardPass.equals(correctPw)){
+            service.delete(id);
+            return "redirect:/";
+        }
+        else {
+            return "delete_form";
+        }
     }
 }

@@ -14,4 +14,8 @@ public interface boardService {
     public void update_Hits(int id, int hit);
 
     public void update(boardDTO dto);
+
+    public void delete(int id);
+
+    public String selectPw(int id);
 }

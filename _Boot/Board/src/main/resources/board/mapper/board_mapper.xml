@@ -17,4 +17,10 @@
     <update id="update" parameterType="kr.hs.study.Board.DTO.boardDTO">
         update board set boardWriter=#{boardWriter}, boardTitle=#{boardTitle}, boardContents=#{boardContents} where id=#{id}
     </update>
+    <delete id="delete" parameterType="kr.hs.study.Board.DTO.boardDTO">
+        delete from board where id=#{id}
+    </delete>
+    <select id="selectPw" resultType="String">
+        select boardPass from board where id=#{id}
+    </select>
 </mapper>

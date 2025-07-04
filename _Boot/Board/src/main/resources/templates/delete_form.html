@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/checkPass">
+    <input type="hidden" name="id" th:value="${id}">
+  <input type="text" name="boardPass" placeholder="비밀번호를 입력하세요.">
+  <button type="submit">삭제</button>
+</form>
+</body>
+</html>
