@@ -31,6 +31,13 @@
 <button type="button" onclick="updateFn()">수정</button>
 <button onclick="deleteFn()">삭제</button>
 
+<form method="post" action="/comWrite">
+  <input type="hidden" name="boardId" th:value="${one.id}" />
+  <input type="text" name="commentWriter" placeholder="작성자"><br>
+  <input type="text" name="commentContents" placeholder="내용을 입력하세요"><br>
+  <button type="submit">작성</button>
+</form>
+
 <script>
   const listFn=()=>{
   location.href="/board";
