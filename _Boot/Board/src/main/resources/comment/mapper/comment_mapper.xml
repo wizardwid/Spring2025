@@ -4,4 +4,7 @@
     <insert id="insert" parameterType="kr.hs.study.Board.DTO.commentDTO">
         insert into comment1(id, commentWriter, commentContents, boardId) values(comment1_seq.nextVal, #{commentWriter}, #{commentContents}, #{boardId})
     </insert>
+    <select id="listAll" resultType="kr.hs.study.Board.DTO.commentDTO">
+        select * from comment1 where boardId=#{boardId} order by id desc
+    </select>
 </mapper>

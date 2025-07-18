@@ -31,12 +31,27 @@
 <button type="button" onclick="updateFn()">수정</button>
 <button onclick="deleteFn()">삭제</button>
 
-<form method="post" action="/comWrite">
+<form method="post" action="/comWrite"><br>
   <input type="hidden" name="boardId" th:value="${one.id}" />
-  <input type="text" name="commentWriter" placeholder="작성자"><br>
-  <input type="text" name="commentContents" placeholder="내용을 입력하세요"><br>
+  <input type="text" name="commentWriter" placeholder="작성자">
+  <input type="text" name="commentContents" placeholder="내용을 입력하세요">
   <button type="submit">작성</button>
-</form>
+</form> <br>
+
+<table border="1">
+  <tr>
+    <td th:text="ID"></td>
+    <td th:text="Writer"></td>
+    <td th:text="Contents"></td>
+    <td th:text="CreatedAt"></td>
+  </tr>
+  <tr th:each="cItem:${cOne}">
+    <td th:text="${cItem.id}"></td>
+    <td th:text="${cItem.commentWriter}"></td>
+    <td th:text="${cItem.commentContents}"></td>
+    <td th:text="${cItem.commentCreatedTime}"></td>
+  </tr>
+</table>
 
 <script>
   const listFn=()=>{

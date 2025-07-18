@@ -1,7 +1,9 @@
 package kr.hs.study.Board.Controller;
 
 import kr.hs.study.Board.DTO.boardDTO;
+import kr.hs.study.Board.DTO.commentDTO;
 import kr.hs.study.Board.Service.boardService;
+import kr.hs.study.Board.Service.commentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ import java.util.List;
 public class boardController {
     @Autowired
     private boardService service;
+    @Autowired
+    private commentService cService;
 
     @GetMapping("/")
     public String board(Model model){
@@ -51,7 +55,9 @@ public class boardController {
         boardDTO dto = service.selectOne(id);
         int hit = dto.getBoardHits() + 1;
         service.update_Hits(id, hit);
+        List<commentDTO> cDto = cService.listAll(id);
         model.addAttribute("one", dto);
+        model.addAttribute("cOne", cDto);
         return "board_view";
     }
 
