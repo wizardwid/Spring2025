@@ -19,6 +19,6 @@ public class memoController {
 
     @PostMapping("/input")
     public void dataInput(memoDTO dto){
-        service.save();
+        service.save(dto);
     }
 }
