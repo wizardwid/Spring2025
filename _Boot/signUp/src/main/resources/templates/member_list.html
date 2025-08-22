@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2 th:text="'Member List'"></h2>
+<table border="1">
+  <tr>
+    <td th:text="'Id'"></td>
+    <td th:text="'Member Email'"></td>
+    <td th:text="'Member Password'"></td>
+    <td th:text="'Member Name'"></td>
+    <td th:text="'상세조회'"></td>
+    <td th:text="'삭제'"></td>
+  </tr>
+  <tr th:each="item:${data}">
+    <td th:text="${item.id}"></td>
+    <td th:text="${item.email}"></td>
+    <td th:text="${item.passwd}"></td>
+    <td th:text="${item.name}"></td>
+    <td><a th:href="@{/view}">조회</a></td>
+    <td><a th:href="@{/delete}">삭제</a></td>
+  </tr>
+</table>
+</body>
+</html>

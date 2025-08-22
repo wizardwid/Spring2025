@@ -1,10 +1,13 @@
 package kr.hs.study.signUp.Entity;
 
 import jakarta.persistence.*;
+import kr.hs.study.signUp.DTO.joinDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Builder
 @NoArgsConstructor
@@ -23,4 +26,13 @@ public class joinEntity {
 
     @Column
     private String name;
+
+    public static joinDTO toDTO(joinEntity ent){
+        return joinDTO.builder()
+                .id(ent.getId())
+                .email(ent.getEmail())
+                .passwd(ent.getPasswd())
+                .name(ent.getName())
+                .build();
+    }
 }
